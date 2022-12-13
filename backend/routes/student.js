@@ -26,22 +26,22 @@ const studentInfo = require('../models/student');
 const studentCntrlr = require('../controllers/student')
 
 //read student list 
-router.get('/studentlist', studentCntrlr.getAllStudents)
+router.get('/api/studentlist', studentCntrlr.getAllStudents)
 
 // read single studentInfo detail
-router.get('/student/:id', studentCntrlr.getOneStudent)
+router.get('/api/student/:id', studentCntrlr.getOneStudent)
 
 // add new student
-router.post('/student', studentCntrlr.addstudent)
+router.post('/api/student', studentCntrlr.addstudent)
 
 // update student detail
-router.put('/student', studentCntrlr.updatestudent)
+router.put('/api/student', studentCntrlr.updatestudent)
 
 // delete studenrt detail
-router.delete('/student/:id', studentCntrlr.deletestudent)
+router.delete('/api/student/:id', studentCntrlr.deletestudent)
 
 // upload csv students
-router.post('/uploadlearners', uploads.single('csv'), (req, res) => {
+router.post('/api/uploadlearners', uploads.single('csv'), (req, res) => {
     csv()
         .fromFile(req.file.path)
         .then((jsonObj) => {
@@ -76,7 +76,7 @@ router.post('/uploadlearners', uploads.single('csv'), (req, res) => {
         })
 });
 //upload csv learners by reading line by line from file first and then save to db
-router.post("/upload", parseCsv, (req, res) => {
+router.post("/api/upload", parseCsv, (req, res) => {
     const { buffer } = req.file;
     const dataFromCSV = [];
 
