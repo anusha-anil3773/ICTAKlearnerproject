@@ -12,6 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 //static folder  
+app.use(express.static('./dist/frontend1'));
 app.use('/upload', express.static('./uploads'));
 const PORT = process.env.PORT || 3000;
 
@@ -27,7 +28,9 @@ app.use('/api', courseApi);
 const programApi = require('./routes/program');
 app.use('/api', programApi);
 
-
+app.get('/*', function(req,res){
+    res.sendFile(path.join(__dirname + '/dist/frontend1/index.html'));
+});
 //server code
 app.listen(PORT, () => {
     console.log(`Server is running at ${PORT}`);
