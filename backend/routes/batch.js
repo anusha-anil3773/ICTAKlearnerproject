@@ -10,7 +10,7 @@ router.post('/add_batch', batchcntrlr.addbatch)
 router.get('/batchlist', batchcntrlr.getallbatch)
 
 // read single batch detail
-router.get('/api/getsinglebatch/:id', batchcntrlr.getonebatch)
+router.get('/getsinglebatch/:id', batchcntrlr.getonebatch)
 
 /
 // update batch detail
